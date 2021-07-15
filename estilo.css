@@ -1,0 +1,110 @@
+* {
+  padding: 0;
+  margin: 0;
+
+  font-family: 'Roboto';
+
+  box-sizing: border-box;
+
+  transition: all 0.2s;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  position: absolute;
+  background: linear-gradient(to right, #7b4397, #dc2430);
+}
+
+header {
+  margin-top: 4rem;
+  padding-left: 4rem;
+}
+
+header h1 {
+  color: white;
+
+  font-weight: lighter;
+  font-family: 'Pacifico';
+
+  font-size: 4rem;
+}
+
+main {
+  display: flex;
+  justify-content: space-evenly;
+
+  margin-top: 6rem;
+}
+
+.card {
+  width: max-content;
+  height: max-content;
+  padding: 1.5rem;
+
+  background-color: #FFF;
+  border-radius: 8px;
+}
+
+.card form label, .card form input {
+  font-size: 1.5rem;
+}
+
+.card form legend {
+  font-size: 2.5rem;
+  font-weight: bold;
+  
+  margin-bottom: 1.5rem;
+}
+
+.card form div.grupo {
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 1.5rem;
+}
+
+.card form div.grupo input {
+  padding: .5rem 1rem;
+
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  background-color: rgba(111, 111, 111, 0.3);
+}
+
+.card form div.grupo input:focus {
+  filter: brightness(1.6);
+}
+
+.card form button {
+  width: 100%;
+
+  padding: 1rem;
+  margin-top: 2rem;
+
+  color: white;
+
+  font-size: 1.5rem;
+  font-weight: bold;
+
+  border: none;
+  border-radius: 8px;
+  background-color: #7b4397;
+}
+
+table {
+  width: 100%;
+
+  margin: 0 3rem;
+  padding: .5rem 2rem;
+  background-color: white;
+}
+
+td, th {
+  padding: .5rem;
+  text-align: left;
+}

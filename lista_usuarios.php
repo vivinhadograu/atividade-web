@@ -1,8 +1,12 @@
 <?php
 
-$conexao = new PDO("mysql:host=localhost;dbname=meubanco", "root", "");
+include_once 'usuario_dao.php';
 
-$usuarios = $conexao->query("SELECT * FROM usuario;");
+$usuarioDAO = new UsuarioDAO();
+
+$filtro = $_GET['filtro-nome'];
+
+$usuarios = $usuarioDAO->listar_usuarios($filtro);
 
 ?>
 
@@ -26,7 +30,28 @@ $usuarios = $conexao->query("SELECT * FROM usuario;");
       <h1>Lista de Usuários</h1>
     </header>
 
-    <main>
+    <main id="pagina-listar-usuarios">
+
+      <?php
+        if($filtro != null) {
+          ?>
+          
+          <form class="limpar-filtro" action="lista_usuarios.php">
+            <button>Limpar</button>
+          </form>
+
+          <?php
+        }
+      ?>
+
+      <form class="filtro-por-nome" action="lista_usuarios.php">
+        <div class="grupo">
+          <label>Filtro:</label>
+          <input name="filtro-nome" />
+        </div>
+        <button type="submit">Pesquisar</button>
+      </form>
+
       <?php
         if ($usuarios != NULL) {
           ?>

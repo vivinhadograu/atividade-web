@@ -40,6 +40,36 @@
       <div class="card">
         <form action="criar_conta.php" method="GET">
           <legend>Cadastro</legend>
+          <?php
+            $mensagemSucesso = $_GET['mensagemSucesso'];
+            $mensagemErro = $_GET['mensagemErro'];
+
+            if($mensagemSucesso != null) {
+              ?>
+
+              <p id="mensagem-de-retorno" class="sucesso">
+                <?php
+                
+                echo $mensagemSucesso;
+
+                ?>
+              </p>
+
+              <?php
+            } else if($mensagemErro != null) {
+              ?>
+
+              <p id="mensagem-de-retorno" class="erro">
+                <?php
+                
+                echo $mensagemErro;
+
+                ?>
+              </p>
+
+              <?php
+            }
+          ?>
 
           <div class="grupo">
             <label>Nome</label>

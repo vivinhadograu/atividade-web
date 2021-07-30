@@ -1,35 +1,24 @@
 <?php
 
+include 'usuario_dao.php';
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-$conexao = new PDO("mysql:host=localhost;dbname=meubanco", "root", "");
+$usuarioDAO = new UsuarioDAO();
 
-$nome = $_GET["nome"];
-$usuario = $_GET["usuario"];
-$email = $_GET["email"];
-$senha = $_GET["senha"];
+$nome = $_GET['nome'];
+$usuario = $_GET['usuario'];
+$email = $_GET['email'];
+$senha = $_GET['senha'];
 
-$senhaCriptografada = md5($senha);
+$resultado = $usuarioDAO->cadastrar($nome, $usuario, $email, $senha);
 
-echo "aaa";
-
-$preparacao = $conexao->prepare("INSERT INTO usuario(nome, usuario, email, senha) VALUES(?, ?, ?, ?)");
-
-echo "aaaaa";
-
-$preparacao->bindParam(1, $nome);
-$preparacao->bindParam(2, $usuario);
-$preparacao->bindParam(3, $email);
-$preparacao->bindParam(4, $senhaCriptografada);
-
-echo "aaaaasdsadjha";
-
-$preparacao->execute();
-
-echo "aaaasadssssssa";
-
-header("Location: index.php");
+if($resultado == null) {
+  header("Location: index.php?mensagemSucesso=Usuário Cadastrado!");
+} else {
+  header("Location: index.php?mensagemErro=$resultado");
+}
 
 ?>
